@@ -1,0 +1,18 @@
+[package]
+name = "self-driving-car"
+version = "0.1.0"
+authors = ["Rene Eichhorn <rene.eichhorn@mni.thm.de>"]
+
+[dependencies]
+log = "0.3.5"
+json_logger = "0.0.1"
+piston_window = "0.32.0"
+find_folder = "0.3.0"
+piston2d-graphics = "0.11.0"
+nalgebra = "0.5.1"
+ncollide = "0.6.0"
+rustc-serialize = "0.3.16"
+bincode = { git = "https://github.com/Auruss/bincode.git" }
+
+[dependencies.deeplearning]
+path = "../rust-deeplearning/"
