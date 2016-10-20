@@ -26,6 +26,7 @@ impl<'a> Intelligence<'a> {
 
     pub fn train_scaled(sim: &mut Simulation) -> Option<Intelligence> {
 
+/*
         let options = Options::defaults();
 
         match process_type() {
@@ -72,6 +73,8 @@ impl<'a> Intelligence<'a> {
                 None
             }
         }
+        */
+        None
     }
 
     pub fn train (&mut self, generations: usize) -> f64 {
@@ -79,14 +82,14 @@ impl<'a> Intelligence<'a> {
             let mut network: NeuralNetwork = NeuralNetwork::new();
             network.set_inputs(2 + self.simulation.sensors.len());
             network.add_neuron_group(0, NeuronType::TanH, 2 + self.simulation.sensors.len(), -1.0, 1.0);
-            network.add_neuron_group(1, NeuronType::TanH, 2, -1.0, 1.0);
+            network.add_neuron_group(1, NeuronType::TanH, 16, -1.0, 1.0);
             network.build();
             network
         }, &mut | network | {
             let mut sim = self.simulation.clone();
 
             let mut score = 0.0;
-            for tick in 0..100 {
+            for tick in 0..10000 {
                 Self::tick_over(network, &mut sim, 0.015);
                 score += sim.local_velocity.x;
             };
@@ -106,7 +109,7 @@ impl<'a> Intelligence<'a> {
             let mut sim = self.simulation.clone();
 
             let mut score = 0.0;
-            for tick in 0..100 {
+            for tick in 0..10000 {
                 Self::tick_over(network, &mut sim, 0.015);
                 score += sim.local_velocity.x;
             };

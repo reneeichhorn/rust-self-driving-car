@@ -36,7 +36,8 @@ fn main () {
     let mut second = simulation.clone();
 
     let mut intelligence = Intelligence::new(&mut simulation);
-    //intelligence.train(2);
+    intelligence.train(2);
+    /*
 
     match Intelligence::train_scaled(&mut second) {
         Some(intel) => {
@@ -46,7 +47,7 @@ fn main () {
         None => {
             return;
         }
-    };
+    };*/
 
     // Create a new game and run it.
     let mut app = App::new(&map, intelligence.simulation.clone());
